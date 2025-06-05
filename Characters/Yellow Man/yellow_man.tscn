@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyny47oaopdex"]
+
+[ext_resource type="Script" uid="uid://y6unvdhkjn8u" path="res://Characters/Yellow Man/yellow_man.gd" id="1_7tval"]
+[ext_resource type="PackedScene" uid="uid://cpnlpxtjadrj6" path="res://player.tscn" id="1_o4s8g"]
+[ext_resource type="Texture2D" uid="uid://dux7avawibcdl" path="res://Characters/Yellow Man/raw-Photoroom.png" id="2_w0v8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0v8t"]
+size = Vector2(12, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tval"]
+size = Vector2(12, 9.68917)
+
+[node name="Yellow Man" type="Node2D"]
+scale = Vector2(2.44, 2.44)
+script = ExtResource("1_7tval")
+
+[node name="Player" parent="." instance=ExtResource("1_o4s8g")]
+scale = Vector2(1.52, 0.920001)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player"]
+floor_stop_on_slope = false
+
+[node name="SpriteStanding" type="Sprite2D" parent="Player/CharacterBody2D"]
+position = Vector2(-6.27418e-07, 4.14641e-06)
+scale = Vector2(0.013, 0.021)
+texture = ExtResource("2_w0v8t")
+
+[node name="SpriteCrouching" type="Sprite2D" parent="Player/CharacterBody2D"]
+visible = false
+position = Vector2(8.07794e-28, 4.00926)
+scale = Vector2(0.013, 0.011)
+texture = ExtResource("2_w0v8t")
+
+[node name="PhysicsBodyStanding" type="CollisionShape2D" parent="Player/CharacterBody2D"]
+scale = Vector2(0.538313, 0.928724)
+shape = SubResource("RectangleShape2D_w0v8t")
+
+[node name="PhysicsBodyCrouching" type="CollisionShape2D" parent="Player/CharacterBody2D"]
+position = Vector2(0, 4.85566)
+scale = Vector2(0.538313, 0.928724)
+shape = SubResource("RectangleShape2D_7tval")
+disabled = true

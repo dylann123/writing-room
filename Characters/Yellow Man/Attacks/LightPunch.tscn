@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm7fovo7dlmme"]
+
+[ext_resource type="PackedScene" uid="uid://bf0o60r1i8iws" path="res://rect_hitbox.tscn" id="2_8dgly"]
+
+[node name="LightPunch" type="Node2D"]
+
+[node name="RectHitbox" parent="." instance=ExtResource("2_8dgly")]
+position = Vector2(23, -4)
+scale = Vector2(1.72, 0.52)
