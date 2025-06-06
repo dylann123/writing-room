@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyny47oaopdex"]
+
+[ext_resource type="Script" uid="uid://y6unvdhkjn8u" path="res://Characters/yellow_man/yellow_man.gd" id="1_7tval"]
+[ext_resource type="Texture2D" uid="uid://dux7avawibcdl" path="res://Characters/yellow_man/Sprites/raw-Photoroom.png" id="2_w0v8t"]
+
+[node name="Character" type="Node2D"]
+scale = Vector2(2.44, 2.44)
+script = ExtResource("1_7tval")
+metadata/DisplayName = "Yellow Man"
+metadata/Character = "yellow_man"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(1.8721, 1.13312)
+collision_layer = 2
+collision_mask = 3
+floor_stop_on_slope = false
+
+[node name="SpriteStanding" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-6.27418e-07, 4.14641e-06)
+scale = Vector2(-0.013, 0.021)
+texture = ExtResource("2_w0v8t")
+
+[node name="SpriteCrouching" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(8.07794e-28, 4.00926)
+scale = Vector2(-0.013, 0.011)
+texture = ExtResource("2_w0v8t")
+
+[node name="PhysicsBodyStanding" type="CollisionPolygon2D" parent="CharacterBody2D"]
+position = Vector2(0, -1.2219e-06)
+scale = Vector2(0.323555, 0.935494)
+polygon = PackedVector2Array(10, 9.52381, 10, -8.09524, 0, -10.9524, -10, -8.09524, -10, 9.52381, 0, 10)
+
+[node name="PhysicsBodyCrouching" type="CollisionPolygon2D" parent="CharacterBody2D"]
+visible = false
+polygon = PackedVector2Array(0, -1.33642, -3.23555, 0.445473, -3.23555, 8.90947, 0, 9.35494, 3.23555, 8.90947, 3.23555, 0)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dux7avawibcdl"
-path="res://.godot/imported/raw-Photoroom.png-f769deb49e9c5c8492bdf6081d864234.ctex"
+uid="uid://ctkoo0xgb321p"
+path="res://.godot/imported/raw.png-14989bdb1df5aaa2b8b6afb720aa1cd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Yellow Man/raw-Photoroom.png"
-dest_files=["res://.godot/imported/raw-Photoroom.png-f769deb49e9c5c8492bdf6081d864234.ctex"]
+source_file="res://Assets/raw.png"
+dest_files=["res://.godot/imported/raw.png-14989bdb1df5aaa2b8b6afb720aa1cd7.ctex"]
 
 [params]
 
