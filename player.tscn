@@ -6,3 +6,5 @@
 script = ExtResource("1_4flbx")
 metadata/PlayerNum = 0
 metadata/Character = ""
+metadata/MaxHealth = 100
+metadata/LandingLag = 5

@@ -1,12 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf0o60r1i8iws"]
 
-[ext_resource type="Script" uid="uid://cd5iprrwxu23u" path="res://RectHitboxArea2D.gd" id="1_i0obw"]
+[ext_resource type="Script" uid="uid://cd5iprrwxu23u" path="res://RectHurtboxArea2D.gd" id="1_i0obw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7lxg"]
 
-[node name="RectHitbox" type="Node2D"]
+[node name="RectHurtbox" type="Node2D"]
 script = ExtResource("1_i0obw")
 metadata/Damage = 100
+metadata/StartFrame = 0
+metadata/VerticalKnockback = 0
+metadata/HorizontalKnockback = 0
+metadata/ActiveFrames = 0
 
 [node name="Area2D" type="Area2D" parent="."]
 

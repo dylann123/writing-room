@@ -89,7 +89,6 @@ var action_frames = 0
 
 func _ready():
 	Player = get_parent()
-	var file_name = get_meta("Character")
 	
 	
 func parse_special(type):
@@ -120,7 +119,7 @@ func HeavyKick():
 
 func default(res):
 	var instance = res.instantiate()
-	var offset = instance.get_node("RectHitbox").position.x * 2
+	var offset = instance.get_node("RectHurtbox").position.x * 2
 	add_child(instance)
 	instance.position = $CharacterBody2D.position
 	if Player.direction == -1:
@@ -128,9 +127,9 @@ func default(res):
 		instance.position.x += $CharacterBody2D.position.x * 2 - offset
 	action_frames = instance.get_meta("ActionFrames")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	action_frames = clamp(action_frames - 1, -1, 9999)
 	if action_frames == 0:
-		get_parent().can_act = true
+		Player.states.acting = false
 	elif action_frames > 0:
-		get_parent().can_act = false
+		Player.states.acting = true

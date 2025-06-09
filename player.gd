@@ -6,19 +6,26 @@ const WALK_SPEED_CROUCH = WALK_SPEED * 1/5
 const WALK_SPEED_AIR = 1000
 const GRAVITY = 1000
 
+@onready
+var health = get_meta("MaxHealth")
+
 var direction = 1 # right
-var can_act = true
 var crouching = false
 var x_velocity_custom = 0
 var x_velocity_last_on_floor = 0
-
-var on_floor_last_frame = false
-var left_floor_last_frame = false
 
 var Character: Node2D = null
 var Body: CharacterBody2D = null
 
 var pnum: int = 0
+
+var states = {
+	"crouching": false,
+	"stunned": false,
+	"in_knockback": false,
+	"acting": false,
+	"landing_lag": 0
+}
 
 func _ready() -> void:
 	var charname = get_meta("Character")
@@ -100,6 +107,9 @@ var inputs = {
 	}
 }
 
+func can_act():
+	return !(states["stunned"] or states["in_knockback"] or states["acting"] or (states["landing_lag"] != 0))
+
 func set_crouching(val):
 	
 	crouching = val
@@ -116,10 +126,13 @@ func _physics_process(delta):
 
 	if Body.is_on_floor():
 		x_velocity_custom = 0
+		states["in_knockback"] = false
+		states["landing_lag"] = clamp(states["landing_lag"]-1,0,get_meta("LandingLag"))
 	else:
 		x_velocity_custom = x_velocity_last_on_floor
+		states["landing_lag"] = get_meta("LandingLag")
 		
-	if can_act:
+	if can_act():
 		for k in inputs:
 			var key = k
 			if pnum == 1:
@@ -145,3 +158,18 @@ func flip():
 	direction *= -1
 	Body.get_node("SpriteStanding").scale.x *= -1
 	Body.get_node("SpriteCrouching").scale.x *= -1
+
+func apply_knockback(horizontalkb, verticalkb):
+	states["in_knockback"] = true
+	x_velocity_custom = horizontalkb
+	x_velocity_last_on_floor = horizontalkb
+	Body.velocity.y = -verticalkb
+	Body.velocity.x = horizontalkb
+
+func apply_health_change(diff):
+	health += diff
+
+func hit(damage, horizontalkb, verticalkb):
+	apply_health_change(-damage)
+	apply_knockback(horizontalkb, verticalkb)
+	print(health)

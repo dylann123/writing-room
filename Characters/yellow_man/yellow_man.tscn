@@ -11,8 +11,6 @@ metadata/Character = "yellow_man"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(1.8721, 1.13312)
-collision_layer = 2
-collision_mask = 3
 floor_stop_on_slope = false
 
 [node name="SpriteStanding" type="Sprite2D" parent="CharacterBody2D"]
